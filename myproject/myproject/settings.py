@@ -20,14 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9u$v3ucj=19)2c^=#h)9=70fval&l143j@6eg&cnr+ia)go7_j'
+SECRET_KEY = 'django-insecure-tnvkckmb0cae&a3dl@=ogv5j#&8$l@q8=(l#6k@l56=c9rw(=-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '192.168.1.11',
+    '192.168.48.67',
 ]
 
 
@@ -130,13 +130,12 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process} {thread} {message}',
+            'style': '{',
+        },
         'simple': {
             'format': '%(levelname)s %(message)s'
-        },
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process} {thread} {'
-                      'message}',
-            'style': '{',
         },
     },
     'handlers': {
@@ -147,19 +146,32 @@ LOGGING = {
         'file': {
             'class': 'logging.FileHandler',
             # 'filename': '/path/to/django.log',
-            # 'filename': './log/django.log',
-            'filename': 'log/django.log',
+            'filename': './log/django.log',
+            'formatter': 'verbose',  # добавлен параметр formatter
+        },
+        'file_myapp': {
+            'class': 'logging.FileHandler',
+            'filename': './log/myapp.log',
+            'formatter': 'simple',  # добавлен параметр formatter
+        },
+        'file_myapp_2': {
+            'class': 'logging.FileHandler',
+            'filename': './log/myapp_2.log',
             'formatter': 'verbose',  # добавлен параметр formatter
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console', 'file'],
-            'level': 'INFO'
+            'level': 'INFO',
         },
         'myapp': {
-            # 'handlers': ['console'],  # 'handlers': ['console', 'file'],
-            'handlers': ['console', 'file'],
+            'handlers': ['console', 'file_myapp'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'myapp_2': {
+            'handlers': ['console', 'file_myapp_2'],
             'level': 'DEBUG',
             'propagate': True,
         },
