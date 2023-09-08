@@ -10,6 +10,6 @@
         <td><a href="{% url 'post_full' post.id %}">{{ post.title }}</a>
         <td>{{ post.get_summary }}</td>
       </tr>
-    {% endfor %}}
+    {% endfor %}
   </table>
 {% endblock %}

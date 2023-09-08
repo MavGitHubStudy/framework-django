@@ -85,7 +85,8 @@ def about(request):
 def author_posts(request, author_id):
     author = get_object_or_404(Author, pk=author_id)
     posts = Post.objects.filter(author=author).order_by('-id')[:5]
-    return render(request, 'myapp3/author_posts.html', {'author': author, 'posts': posts})
+    return render(request, 'myapp3/author_posts.html',
+                  {'author': author, 'posts': posts})
 
 
 def post_full(request, post_id):
