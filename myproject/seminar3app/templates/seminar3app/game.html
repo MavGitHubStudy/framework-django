@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  {% for result in results %}
+    <p>{{ result }}</p>
+  {% endfor %}
+  <p>
+    <hr>{{ realization }}<hr>
+  </p>
+{% endblock %}
