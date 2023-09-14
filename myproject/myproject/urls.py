@@ -16,8 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
+# from django.conf.urls.static import static
+# from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls'))
+    path('les1/', include('myapp.urls')),
+    path('les2/', include('myapp2.urls')),
+    path('les3/', include('myapp3.urls')),
+    path('les4/', include('myapp4.urls')),
+    path('sem1/', include('myapp.urls')),
+    path('sem2/', include('seminar2app.urls')),
+    path('sem3/', include('seminar3app.urls')),
+    path('sem4/', include('seminar4app.urls')),
+    path('myshop/', include('myshopapp.urls')),
 ]
+
+# включаем возможность обработки картинок
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
