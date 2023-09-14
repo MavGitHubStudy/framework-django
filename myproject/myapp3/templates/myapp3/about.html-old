@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Обо мне</title>
+</head>
+<body>
+  <h1>Обо мне</h1>
+  <p>Меня зовут Алексей и я пишу программы с 14 лет.</p>
+</body>
+</html>
