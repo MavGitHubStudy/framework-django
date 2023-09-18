@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Play">
+  </form>
+  {% if results %}
+    <h3>Results:</h3>
+    <ul>
+      {% for result in results %}
+        <li>{{ result }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+<!--  <p>-->
+<!--    <hr>{{ realization }}<hr>-->
+<!--  </p>-->
+{% endblock %}
