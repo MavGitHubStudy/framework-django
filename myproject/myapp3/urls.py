@@ -8,8 +8,8 @@ from .views import index, about
 from .views import author_posts, post_full
 
 urlpatterns = [
-    path('hello/', hello, name='hello'),
-    path('hello2/', HellowView.as_view(), name='hello2'),
+    # path('hello/', hello, name='hello'),
+    # path('hello2/', HellowView.as_view(), name='hello2'),
     path('posts/<int:year>/', year_post, name='year_post'),
     path('posts/<int:year>/<int:month>/', MonthPost.as_view(),
          name='month_post'),

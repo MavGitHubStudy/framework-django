@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Устанавливаем multipart/form-data -->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Выводим каждое поле формы в отдельном параграфе -->
+    {{ form.as_p }}
+    <input type="submit" value="Add/Добавить продукт">
+  </form>
+
+  <!-- Выводим уже созданные записи -->
+  <hr>
+  <h2>Уже добавленные товары</h2>
+  {% for p in products %}
+  <p>{{ p.name }}</p>
+  <img src="{{ p.image.url }}" width="100px">
+  <!-- Выводим размер картинки -->
+  <p>Оригинальный размер картинки {{ p.image.width }}x{{ p.image.height }}</p>
+  <br/>
+<a href="{{p.product}}"></a>
+  {% endfor %}
+{% endblock %}
